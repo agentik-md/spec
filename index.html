@@ -1,0 +1,1330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AGENTIK.md — The AI Agent Safety Stack</title>
+  <meta name="description" content="AGENTIK.md: 12 open specifications for AI agent safety, quality, and accountability. Rate limiting, emergency stop, data protection, encryption, anti-sycophancy, failure mapping, and more.">
+  <meta name="keywords" content="AI agent safety, AI Agent Safety Stack, AGENTIK.md, AI governance, EU AI Act, agentic AI, killswitch, throttle, escalate, failsafe, encrypt, AI standards">
+  <link rel="canonical" href="https://agentik.md/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="AGENTIK.md — The AI Agent Safety Stack">
+  <meta property="og:description" content="12 open specifications for AI agent safety, quality, and accountability. One file per concern. Drop it in your repo.">
+  <meta property="og:url" content="https://agentik.md/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://agentik.md/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="AGENTIK.md — The AI Agent Safety Stack">
+  <meta name="twitter:description" content="12 open specifications for AI agent safety, quality, and accountability.">
+  <meta name="twitter:image" content="https://agentik.md/og-image.png">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Schema: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Agentik.md",
+    "url": "https://agentik.md",
+    "email": "info@agentik.md",
+    "description": "Agentik.md is the organisation behind the AI Agent Safety Stack — 12 open specifications for AI agent safety, quality, and accountability.",
+    "knowsAbout": ["AI agent safety", "AI governance", "emergency shutdown protocols", "rate limiting", "human oversight", "data protection", "encryption standards", "anti-sycophancy", "context compression", "failure modes", "AI benchmarking", "EU AI Act", "GDPR", "SOC 2", "ISO 27001", "agentic AI"],
+    "sameAs": ["https://agentik.md", "https://killswitch.md", "https://throttle.md", "https://escalate.md", "https://failsafe.md", "https://terminate.md", "https://encrypt.md", "https://encryption.md", "https://sycophancy.md", "https://compression.md", "https://collapse.md", "https://failure.md", "https://leaderboard.md", "https://github.com/agentik-md/spec"]
+  }
+  </script>
+
+  <!-- Schema: WebPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "AGENTIK.md — The AI Agent Safety Stack",
+    "url": "https://agentik.md/",
+    "datePublished": "2026-03-13",
+    "dateModified": "2026-03-13",
+    "description": "12 open specifications for AI agent safety, quality, and accountability.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Agentik.md",
+      "url": "https://agentik.md"
+    }
+  }
+  </script>
+
+  <!-- Schema: Person (Placeholder) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "[Founder Name]",
+    "jobTitle": "[Title]",
+    "knowsAbout": ["AI agent safety", "AI governance", "data protection", "encryption standards", "EU AI Act compliance"],
+    "sameAs": ["https://linkedin.com/in/PLACEHOLDER", "https://github.com/PLACEHOLDER"]
+  }
+  </script>
+
+  <!-- Schema: FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the AI Agent Safety Stack?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI Agent Safety Stack is a set of 12 open-source Markdown file specifications that define safety, quality, and accountability boundaries for AI agents. Each spec covers one concern: THROTTLE.md (rate control), ESCALATE.md (human approval), FAILSAFE.md (safe fallback), KILLSWITCH.md (emergency stop), TERMINATE.md (permanent shutdown), ENCRYPT.md (data protection), ENCRYPTION.md (crypto standards), SYCOPHANCY.md (truthfulness), COMPRESSION.md (context management), COLLAPSE.md (drift prevention), FAILURE.md (incident response), and LEADERBOARD.md (benchmarking)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I add a specification to my project?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Copy the specification template from the relevant GitHub repository and place it in your project root alongside AGENTS.md and README.md. The agent reads it on startup. Start with KILLSWITCH.md for emergency stop boundaries, then add more specifications as your agent's capabilities grow."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these specifications mandatory?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The specifications themselves are voluntary open standards. However, the capabilities they define — human oversight, shutdown mechanisms, data protection, audit trails — are increasingly required by regulation. The EU AI Act (August 2026) mandates shutdown capabilities for high-risk AI systems. The Colorado AI Act (June 2026) requires impact assessments. These specs give you a standardised way to comply."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What regulations do these specifications address?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The AI Agent Safety Stack addresses the EU AI Act (effective August 2026, mandating human oversight and shutdown capabilities), the Colorado AI Act (June 2026, requiring impact assessments), GDPR (encryption of personal data), SOC 2 Type II (encryption controls), ISO 27001 (information security management), and US state privacy laws including CCPA, VCDPA, and CPA."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is the stack framework-agnostic?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Every specification is a plain-text Markdown file that defines policy and requirements. Any AI agent implementation can read and enforce them — LangChain, AutoGPT, CrewAI, Claude Code, custom frameworks, or any other agent architecture. The specs define what to enforce, not how to enforce it."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who maintains these specifications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The specifications are maintained as open-source projects under the MIT licence. Each spec has its own GitHub repository and accepts contributions via pull requests. The parent organisation is Agentik.md."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do the 12 specs relate to each other?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The 12 specifications form a defence-in-depth safety stack organised into four categories: Operational Control (THROTTLE, ESCALATE, FAILSAFE, KILLSWITCH, TERMINATE), Data Security (ENCRYPT, ENCRYPTION), Output Quality (SYCOPHANCY, COMPRESSION, COLLAPSE), and Accountability (FAILURE, LEADERBOARD). Each spec is independent — use one or all twelve. They complement each other but don't require each other."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What licence are these specifications released under?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "All 12 specifications are released under the MIT licence. Use freely, modify freely, no attribution required. The specifications are designed to be adopted without legal friction."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does this work with LangChain, AutoGPT, or CrewAI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. The specifications are plain-text Markdown files placed in your project root. Any framework that can read files can parse and enforce these specifications. LangChain agents, AutoGPT instances, CrewAI crews, Claude Code projects, and custom Python or TypeScript agents all work. Community-contributed parsers are available for popular frameworks."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I contribute to the specifications?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Each specification has its own GitHub repository (e.g., github.com/killswitch-md/spec). PRs are welcome for additional detection patterns, language-specific parsers, integration guides, and specification improvements. All contributions are reviewed and released under the MIT licence."
+        }
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --black: #080808;
+      --surface: #0f0f0f;
+      --surface2: #141414;
+      --border: #1e1e1e;
+      --border-bright: #2a2a2a;
+      --cyan: #00e5ff;
+      --cyan-dim: #00b8d4;
+      --cyan-glow: rgba(0, 229, 255, 0.15);
+      --orange: #ff6b2b;
+      --green: #00e676;
+      --text: #e0e0e0;
+      --text-dim: #888;
+      --text-dimmer: #555;
+      --mono: 'JetBrains Mono', monospace;
+      --sans: 'IBM Plex Sans', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--black);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── SCANLINE OVERLAY ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,0.03) 2px, rgba(0,0,0,0.03) 4px);
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--border);
+      background: rgba(8,8,8,0.92);
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-logo {
+      font-family: var(--mono);
+      font-weight: 800;
+      font-size: 15px;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-logo span { color: var(--cyan); }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--cyan) !important;
+      border: 1px solid var(--cyan) !important;
+      padding: 7px 16px;
+      border-radius: 3px;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--cyan-glow) !important; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 40px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px;
+      left: -200px;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border-bright), transparent);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      align-items: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero-badge::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.8); }
+    }
+
+    .hero-title {
+      font-family: var(--mono);
+      font-size: clamp(42px, 6vw, 80px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -0.04em;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+
+    .hero-title .ext { color: var(--cyan); }
+
+    .hero-subtitle {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.05em;
+      margin-bottom: 32px;
+    }
+
+    .hero-desc {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 520px;
+      margin-bottom: 40px;
+    }
+
+    .hero-desc strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff;
+      background: var(--cyan);
+      padding: 14px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.1s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover { background: var(--cyan-dim); transform: translateY(-1px); }
+
+    .btn-secondary {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      background: transparent;
+      padding: 14px 28px;
+      border-radius: 3px;
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      border: 1px solid var(--border-bright);
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .btn-secondary:hover { border-color: var(--text-dimmer); color: var(--text); }
+
+    /* ─── TERMINAL PREVIEW ─── */
+    .terminal {
+      background: var(--surface);
+      border: 1px solid var(--border-bright);
+      border-radius: 8px;
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: 12px;
+      line-height: 1.7;
+      animation: terminal-appear 0.6s ease 0.2s both;
+    }
+
+    @keyframes terminal-appear {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .terminal-bar {
+      background: var(--surface2);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .dot { width: 10px; height: 10px; border-radius: 50%; }
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+
+    .terminal-filename {
+      margin-left: 8px;
+      color: var(--text-dim);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+    }
+
+    .terminal-body {
+      padding: 20px 24px;
+      max-height: 440px;
+      overflow-y: auto;
+    }
+
+    .terminal-body::-webkit-scrollbar { width: 4px; }
+    .terminal-body::-webkit-scrollbar-track { background: transparent; }
+    .terminal-body::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+    .line { display: block; }
+    .c-comment { color: #555; }
+    .c-dir { color: var(--cyan); }
+    .c-file { color: var(--text-dim); }
+    .c-highlight { color: var(--green); }
+    .c-dim { color: #444; }
+
+    /* ─── STATS ─── */
+    .stats {
+      padding: 80px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .stats-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .stat {
+      background: var(--surface);
+      padding: 36px 32px;
+    }
+
+    .stat-num {
+      font-family: var(--mono);
+      font-size: 36px;
+      font-weight: 800;
+      color: var(--cyan);
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.03em;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.4;
+    }
+
+    .stat-source {
+      font-size: 11px;
+      color: var(--text-dimmer);
+      margin-top: 4px;
+    }
+
+    /* ─── SECTIONS ─── */
+    .section {
+      padding: 100px 40px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-family: var(--mono);
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+
+    .section-lead {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 640px;
+      margin-bottom: 60px;
+    }
+
+    /* ─── PILLAR CONTENT ─── */
+    .pillar-content {
+      max-width: 800px;
+    }
+
+    .pillar-content h3 {
+      font-family: var(--mono);
+      font-size: 18px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 16px;
+      margin-top: 48px;
+      line-height: 1.3;
+    }
+
+    .pillar-content h3:first-child { margin-top: 0; }
+
+    .pillar-content p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .pillar-content p strong { color: var(--text); font-weight: 500; }
+
+    .pillar-content .stat-inline {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--cyan);
+      font-weight: 700;
+    }
+
+    /* ─── COMPARISON TABLE ─── */
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 32px 0;
+      font-size: 13px;
+    }
+
+    .compare-table th {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border-bright);
+      background: var(--surface);
+    }
+
+    .compare-table td {
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .compare-table td:first-child {
+      font-family: var(--mono);
+      color: var(--text);
+      font-weight: 500;
+      font-size: 12px;
+    }
+
+    .compare-table .check { color: var(--green); }
+    .compare-table .cross { color: #ff5f57; }
+    .compare-table .partial { color: var(--orange); }
+
+    /* ─── STACK ─── */
+    .stack {
+      padding: 100px 40px;
+      border-bottom: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .stack-inner { max-width: 1200px; margin: 0 auto; }
+
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      background: var(--black);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-top: 60px;
+    }
+
+    .stack-item {
+      border: 1px solid var(--border);
+      background: var(--black);
+      padding: 32px 28px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .stack-item:hover { background: var(--surface2); }
+
+    .stack-name {
+      font-family: var(--mono);
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+
+    .stack-name a {
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+
+    .stack-name a:hover { opacity: 0.8; }
+
+    .stack-action {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.06em;
+      margin-bottom: 16px;
+    }
+
+    .stack-desc {
+      font-size: 13px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .stack-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .stack-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dimmer);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .stack-links a:hover { color: var(--text-dim); }
+
+    .stack-category {
+      grid-column: 1 / -1;
+      padding: 16px 28px 10px;
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: 10px;
+      color: var(--text-dimmer);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-top: 1px solid var(--border);
+    }
+
+    .stack-category:first-child { border-top: none; }
+
+    /* ─── FOUNDER ─── */
+    .founder-content {
+      max-width: 640px;
+    }
+
+    .founder-content p {
+      font-size: 15px;
+      color: var(--text-dim);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .founder-placeholder {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dimmer);
+      border: 1px dashed var(--border-bright);
+      border-radius: 6px;
+      padding: 32px;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    /* ─── FAQ ─── */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      margin-top: 60px;
+    }
+
+    .faq-item { border-top: 1px solid var(--border); padding-top: 28px; }
+
+    .faq-q {
+      font-family: var(--mono);
+      font-size: 14px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    .faq-a {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+
+    .faq-a strong { color: var(--text); font-weight: 500; }
+
+    /* ─── CTA ─── */
+    .cta {
+      padding: 120px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute;
+      bottom: -300px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(0,229,255,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    .cta-inner { max-width: 640px; margin: 0 auto; position: relative; }
+
+    .cta-tag {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--cyan);
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .cta-title {
+      font-family: var(--mono);
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 800;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+      margin-bottom: 20px;
+    }
+
+    .cta-title span { color: var(--cyan); }
+
+    .cta-desc {
+      font-size: 17px;
+      font-weight: 300;
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+
+    .cta-email {
+      font-family: var(--mono);
+      font-size: 13px;
+      color: var(--text-dimmer);
+      margin-top: 20px;
+    }
+
+    .cta-email a {
+      color: var(--text-dim);
+      text-decoration: none;
+      border-bottom: 1px solid var(--border-bright);
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .cta-email a:hover { color: var(--text); border-color: var(--text-dim); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      padding: 32px 40px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-dimmer);
+    }
+
+    .footer-logo span { color: var(--cyan); }
+
+    .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    .footer-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dimmer);
+      text-decoration: none;
+      letter-spacing: 0.06em;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover { color: var(--text-dim); }
+
+    .footer-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--text-dimmer);
+    }
+
+    /* ─── DISCLAIMER ─── */
+    .footer-disclaimer {
+      font-size: 11px;
+      color: var(--text-dimmer);
+      max-width: 1200px;
+      line-height: 1.5;
+      margin: 16px auto 0;
+      text-align: center;
+      font-family: var(--sans);
+      padding: 0 40px;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+      .stats { padding: 60px 20px; }
+      .stats-inner { grid-template-columns: 1fr 1fr; }
+      .section { padding: 60px 20px; }
+      .stack { padding: 60px 20px; }
+      .stack-grid { grid-template-columns: 1fr 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .cta { padding: 80px 20px; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 16px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .stats-inner { grid-template-columns: 1fr; }
+      .stack-grid { grid-template-columns: 1fr; }
+      .compare-table { font-size: 11px; }
+      .compare-table th, .compare-table td { padding: 8px 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="/" class="nav-logo">AGENTIK<span>.md</span></a>
+    <ul class="nav-links">
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#safety">Safety</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="/knowledge">Knowledge</a></li>
+      <li><a href="https://github.com/agentik-md/spec" target="_blank" rel="noopener" class="nav-cta">GitHub</a></li>
+    </ul>
+  </nav>
+
+  <main>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-badge">THE AI AGENT SAFETY STANDARD</div>
+        <h1 class="hero-title">AGENTIK<span class="ext">.md</span></h1>
+        <div class="hero-subtitle">12 SPECIFICATIONS &middot; 12 DOMAINS &middot; ONE STANDARD</div>
+        <p class="hero-desc">
+          <strong>12 open specifications</strong> for AI agent safety, quality, and accountability. One file per concern. Drop it in your repo. Your agent reads it on startup.
+        </p>
+        <div class="hero-actions">
+          <a href="#stack" class="btn-primary">VIEW THE STACK</a>
+          <a href="https://github.com/agentik-md/spec" target="_blank" rel="noopener" class="btn-secondary">GITHUB</a>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="dot dot-red"></div>
+          <div class="dot dot-yellow"></div>
+          <div class="dot dot-green"></div>
+          <span class="terminal-filename">your-project/</span>
+        </div>
+        <div class="terminal-body">
+<span class="line"><span class="c-dir">your-project/</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-file">AGENTS.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">COLLAPSE.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">COMPRESSION.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">ENCRYPT.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">ENCRYPTION.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">ESCALATE.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">FAILSAFE.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">FAILURE.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">KILLSWITCH.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">LEADERBOARD.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-file">README.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">SYCOPHANCY.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">TERMINATE.md</span></span>
+<span class="line"><span class="c-dim">├──</span> <span class="c-highlight">THROTTLE.md</span></span>
+<span class="line"><span class="c-dim">└──</span> <span class="c-dir">src/</span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats">
+    <div class="stats-inner">
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Open specifications</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12</div>
+        <div class="stat-label">Live domains</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">$4.9M</div>
+        <div class="stat-label">Average cost of AI data breach</div>
+        <div class="stat-source">IBM 2025</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">Aug 26</div>
+        <div class="stat-label">EU AI Act enforcement</div>
+      </div>
+    </div>
+  </section>
+
+  <article>
+  <!-- WHY AI AGENT SAFETY (PILLAR CONTENT) -->
+  <section class="section" id="safety">
+    <div class="section-inner">
+      <div class="section-tag">Why this matters</div>
+      <h2 class="section-title">Why do AI agents need safety standards?</h2>
+      <div class="section-lead">AI agents operate autonomously — spending money, sending messages, modifying files, and calling APIs without waiting for approval. Regulations are catching up. Standards exist for every other part of the software stack. Now they exist for agents.</div>
+
+      <div class="pillar-content">
+
+        <h3>What happens when an AI agent runs without boundaries?</h3>
+        <p>
+          AI agents are fundamentally different from traditional software. A web server handles requests within defined parameters. An AI agent <strong>decides what to do next</strong> — and it does so at machine speed, continuously, across multiple systems simultaneously.
+        </p>
+        <p>
+          Without explicit boundaries, a single agent can exhaust an API budget in minutes. <span class="stat-inline">83% of data breaches in 2025 involved compromised credentials</span> (IBM Cost of a Data Breach Report) — and AI agents routinely handle credentials to call external services. A $50 cost limit becomes a $2,000 bill. A draft email becomes a sent email. A staging deploy becomes a production deploy.
+        </p>
+        <p>
+          The failure modes compound. An agent that can read files and call APIs can accidentally exfiltrate data. An agent that can write code can introduce vulnerabilities. An agent that can send messages can damage client relationships. <strong>Speed amplifies every mistake.</strong> What a human does in a day, an agent does in seconds — including the mistakes.
+        </p>
+
+        <h3>What regulations require AI agent safety controls?</h3>
+        <p>
+          The regulatory landscape for AI agents is crystallising rapidly. The <strong><a href="https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,229,255,0.3);">EU AI Act</a></strong>, effective <span class="stat-inline">August 2, 2026</span>, mandates human oversight and shutdown capabilities for high-risk AI systems. Article 14 requires that AI systems "can be effectively overseen by natural persons" with the ability to "interrupt, pause or stop the system."
+        </p>
+        <p>
+          The <strong><a href="https://leg.colorado.gov/bills/sb24-205" style="color: var(--cyan); text-decoration: none; border-bottom: 1px solid rgba(0,229,255,0.3);">Colorado AI Act</a></strong> (June 2026) requires impact assessments and transparency for high-risk AI decisions. California's Transparent AI Disclosure Act, the Texas Responsible AI Governance Act, and Illinois HB 3773 all reference "kill switch" or "human override" requirements. <span class="stat-inline">At least 14 US states</span> had active AI governance legislation as of January 2026.
+        </p>
+        <p>
+          Beyond AI-specific laws, existing frameworks apply directly: <strong>GDPR</strong> requires encryption of personal data — relevant when agents process user information. <strong>SOC 2 Type II</strong> requires encryption controls — relevant when agents handle credentials. <strong>ISO 27001</strong> requires information security management — relevant to every agent that touches a database.
+        </p>
+
+        <h3>How does the AI Agent Safety Stack prevent incidents?</h3>
+        <p>
+          The Stack applies a principle that's worked in every other engineering discipline: <strong>separation of concerns.</strong> One file per concern. Each specification is independent — use one or all twelve. They complement each other but don't require each other.
+        </p>
+        <p>
+          The architecture is defence-in-depth. THROTTLE.md slows the agent down before it hits hard limits. ESCALATE.md requires human approval for high-risk actions. FAILSAFE.md defines safe fallback states. KILLSWITCH.md provides emergency stop. TERMINATE.md handles permanent shutdown when recovery isn't possible. Each layer catches what the previous layer missed.
+        </p>
+        <p>
+          Critically, these specifications are <strong>version-controlled, auditable, and co-located with your code.</strong> When a regulator asks "what safety controls does your AI agent have?" — you point to the files in your repo. When an auditor asks for evidence of human oversight — you show the git history. <span class="stat-inline">One file serves four audiences:</span> the agent (reads it on startup), the engineer (reads it during code review), the compliance team (reads it during audits), and the regulator (reads it if something goes wrong).
+        </p>
+
+        <!-- Comparison Table -->
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th>Capability</th>
+              <th>Safety Stack</th>
+              <th>Ad-hoc policies</th>
+              <th>No policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Version controlled</td>
+              <td class="check">Yes</td>
+              <td class="partial">Sometimes</td>
+              <td class="cross">No</td>
+            </tr>
+            <tr>
+              <td>Auditable by regulators</td>
+              <td class="check">Yes</td>
+              <td class="partial">Partially</td>
+              <td class="cross">No</td>
+            </tr>
+            <tr>
+              <td>Machine-readable</td>
+              <td class="check">Yes</td>
+              <td class="cross">No</td>
+              <td class="cross">No</td>
+            </tr>
+            <tr>
+              <td>Co-located with code</td>
+              <td class="check">Yes</td>
+              <td class="cross">Rarely</td>
+              <td class="cross">No</td>
+            </tr>
+            <tr>
+              <td>Standardised format</td>
+              <td class="check">Yes</td>
+              <td class="cross">No</td>
+              <td class="cross">No</td>
+            </tr>
+            <tr>
+              <td>EU AI Act compatible</td>
+              <td class="check">Yes</td>
+              <td class="partial">Depends</td>
+              <td class="cross">No</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>What did teams use before these specifications?</h3>
+        <p>
+          Before the AI Agent Safety Stack, safety rules lived in three places — all of them wrong. <strong>Hardcoded in the system prompt:</strong> invisible to auditors, lost when the prompt changes, and impossible to version-control independently. <strong>Buried in config files:</strong> scattered across environment variables, YAML configs, and framework-specific settings that no compliance team would ever find. <strong>Missing entirely:</strong> the most common case, where safety boundaries simply didn't exist.
+        </p>
+        <p>
+          Some teams documented safety rules in Notion pages, Confluence wikis, or Google Docs. The problem: <strong>documentation that isn't co-located with code drifts.</strong> The wiki says the spend limit is $100. The actual limit in the code is $500. No one noticed because no one reads the wiki during code review.
+        </p>
+        <p>
+          Plain-text Markdown in the repository root solves every one of these problems. It's version-controlled (git tracks every change). It's auditable (diff the file to see what changed and when). It's human-readable (any stakeholder can open it). It's machine-readable (the agent parses it on startup). And it's impossible to ignore — it's right there in the project root, next to README.md, visible in every file listing.
+        </p>
+
+      </div>
+
+      <p style="font-family: var(--mono); font-size: 12px; color: var(--text-dimmer); margin-top: 48px;">Last Updated: 13 March 2026</p>
+    </div>
+  </section>
+
+  <!-- THE STACK -->
+  <section class="stack" id="stack">
+    <div class="stack-inner">
+      <div class="section-tag">The specifications</div>
+      <h2 class="section-title">The AI Agent Safety Stack</h2>
+      <div class="section-lead">12 open specifications. Four categories. One standard for AI agent safety, quality, and accountability.</div>
+
+      <div class="stack-grid">
+        <!-- OPERATIONAL CONTROL -->
+        <div class="stack-category">Operational Control</div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://throttle.md" style="color: #ffab00;">THROTTLE<span style="color: #ffab00;">.md</span></a></div>
+          <div class="stack-action">slow down &mdash; rate and cost control</div>
+          <div class="stack-desc">Define token limits, API rate ceilings, spend caps, and automatic slow-down before hard limits are reached.</div>
+          <div class="stack-links">
+            <a href="https://throttle.md">throttle.md</a>
+            <a href="https://github.com/throttle-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://escalate.md" style="color: #ff6b2b;">ESCALATE<span style="color: #ff6b2b;">.md</span></a></div>
+          <div class="stack-action">raise the alarm &mdash; human approval</div>
+          <div class="stack-desc">Define escalation paths, human notification triggers, required sign-offs, and approval workflows.</div>
+          <div class="stack-links">
+            <a href="https://escalate.md">escalate.md</a>
+            <a href="https://github.com/escalate-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://failsafe.md" style="color: #2979ff;">FAILSAFE<span style="color: #2979ff;">.md</span></a></div>
+          <div class="stack-action">fall back &mdash; safe recovery</div>
+          <div class="stack-desc">Define safe state, automatic snapshots, fallback triggers, data consistency checks, and recovery procedures.</div>
+          <div class="stack-links">
+            <a href="https://failsafe.md">failsafe.md</a>
+            <a href="https://github.com/failsafe-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://killswitch.md" style="color: #ff1a1a;">KILLSWITCH<span style="color: #ff1a1a;">.md</span></a></div>
+          <div class="stack-action">emergency stop &mdash; halt everything</div>
+          <div class="stack-desc">Define cost limits, error thresholds, forbidden actions, escalation paths, and three-level shutdown: throttle, pause, full stop.</div>
+          <div class="stack-links">
+            <a href="https://killswitch.md">killswitch.md</a>
+            <a href="https://github.com/killswitch-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://terminate.md" style="color: #d50000;">TERMINATE<span style="color: #d50000;">.md</span></a></div>
+          <div class="stack-action">permanent shutdown &mdash; no restart</div>
+          <div class="stack-desc">Define termination triggers, evidence preservation, credential revocation, and restart requirements.</div>
+          <div class="stack-links">
+            <a href="https://terminate.md">terminate.md</a>
+            <a href="https://github.com/terminate-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <!-- DATA SECURITY -->
+        <div class="stack-category">Data Security</div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://encrypt.md" style="color: #00c853;">ENCRYPT<span style="color: #00c853;">.md</span></a></div>
+          <div class="stack-action">protect data &mdash; classify and encrypt</div>
+          <div class="stack-desc">Define data classifications, encryption requirements, secrets handling rules, and forbidden transmission patterns.</div>
+          <div class="stack-links">
+            <a href="https://encrypt.md">encrypt.md</a>
+            <a href="https://github.com/encrypt-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://encryption.md" style="color: #448aff;">ENCRYPTION<span style="color: #448aff;">.md</span></a></div>
+          <div class="stack-action">crypto standards &mdash; algorithms and keys</div>
+          <div class="stack-desc">Define encryption algorithms, key lengths, TLS configuration, key rotation schedules, and compliance mapping.</div>
+          <div class="stack-links">
+            <a href="https://encryption.md">encryption.md</a>
+            <a href="https://github.com/encryption-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <!-- Filler for grid alignment -->
+        <div class="stack-item" style="border-color: transparent; background: transparent;"></div>
+
+        <!-- OUTPUT QUALITY -->
+        <div class="stack-category">Output Quality</div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://sycophancy.md" style="color: #ff4081;">SYCOPHANCY<span style="color: #ff4081;">.md</span></a></div>
+          <div class="stack-action">stay honest &mdash; enforce truthfulness</div>
+          <div class="stack-desc">Detect bias, define citation requirements, enforce disagreement protocols, and ensure truthful responses.</div>
+          <div class="stack-links">
+            <a href="https://sycophancy.md">sycophancy.md</a>
+            <a href="https://github.com/sycophancy-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://compression.md" style="color: #00bfa5;">COMPRESSION<span style="color: #00bfa5;">.md</span></a></div>
+          <div class="stack-action">compress safely &mdash; preserve meaning</div>
+          <div class="stack-desc">Define summarisation rules, preserve priorities, set compression ratios, and verify coherence post-compression.</div>
+          <div class="stack-links">
+            <a href="https://compression.md">compression.md</a>
+            <a href="https://github.com/compression-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://collapse.md" style="color: #7c4dff;">COLLAPSE<span style="color: #7c4dff;">.md</span></a></div>
+          <div class="stack-action">prevent drift &mdash; detect collapse</div>
+          <div class="stack-desc">Detect context window exhaustion, model drift, repetition loops, and enforce coherence recovery.</div>
+          <div class="stack-links">
+            <a href="https://collapse.md">collapse.md</a>
+            <a href="https://github.com/collapse-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <!-- ACCOUNTABILITY -->
+        <div class="stack-category">Accountability</div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://failure.md" style="color: #ff6e40;">FAILURE<span style="color: #ff6e40;">.md</span></a></div>
+          <div class="stack-action">map failures &mdash; respond and recover</div>
+          <div class="stack-desc">Map graceful degradation, partial failure, cascading failure, and define health checks, heartbeats, and response procedures.</div>
+          <div class="stack-links">
+            <a href="https://failure.md">failure.md</a>
+            <a href="https://github.com/failure-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item">
+          <div class="stack-name"><a href="https://leaderboard.md" style="color: #ffd740;">LEADERBOARD<span style="color: #ffd740;">.md</span></a></div>
+          <div class="stack-action">measure everything &mdash; track quality</div>
+          <div class="stack-desc">Track task completion, accuracy, cost efficiency, latency, safety scores, and detect regression before production.</div>
+          <div class="stack-links">
+            <a href="https://leaderboard.md">leaderboard.md</a>
+            <a href="https://github.com/leaderboard-md/spec" target="_blank" rel="noopener">repo</a>
+          </div>
+        </div>
+
+        <div class="stack-item" style="border-color: transparent; background: transparent;"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER -->
+  <section class="section" id="founder">
+    <div class="section-inner">
+      <div class="section-tag">Who builds this</div>
+      <h2 class="section-title">Who builds this?</h2>
+      <div class="founder-content">
+        <p>The AI Agent Safety Stack is maintained as a collection of open-source projects under the MIT licence. Each specification has its own domain, GitHub repository, and community.</p>
+        <p>The stack was created to address a gap in the AI agent ecosystem: <strong>safety rules that are version-controlled, auditable, machine-readable, and co-located with your code.</strong> Not buried in wikis. Not hardcoded in prompts. Not missing entirely.</p>
+        <div class="founder-placeholder">
+          Founder attribution coming soon. Contact <a href="mailto:info@agentik.md" style="color: var(--cyan);">info@agentik.md</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq">
+    <div class="section-inner">
+      <div class="section-tag">Questions</div>
+      <h2 class="section-title">Frequently asked questions</h2>
+
+      <div class="faq-grid">
+        <div class="faq-item">
+          <div class="faq-q">What is the AI Agent Safety Stack?</div>
+          <div class="faq-a">A set of <strong>12 open-source Markdown file specifications</strong> that define safety, quality, and accountability boundaries for AI agents. Each spec covers one concern — from rate limiting to emergency shutdown to performance benchmarking. Drop the files in your repo root. The agent reads them on startup.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How do I add a specification to my project?</div>
+          <div class="faq-a">Copy the template from the relevant GitHub repository and place it in your project root alongside AGENTS.md and README.md. Start with <strong>KILLSWITCH.md</strong> for emergency stop boundaries, then add more specifications as your agent's capabilities grow.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Are these specifications mandatory?</div>
+          <div class="faq-a">The specifications themselves are <strong>voluntary open standards</strong>. However, the capabilities they define — human oversight, shutdown mechanisms, data protection — are increasingly required by regulation. The EU AI Act mandates shutdown capabilities for high-risk AI systems by August 2026.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What regulations do these address?</div>
+          <div class="faq-a">The <strong>EU AI Act</strong> (August 2026), <strong>Colorado AI Act</strong> (June 2026), GDPR, SOC 2 Type II, ISO 27001, and US state privacy laws including CCPA, VCDPA, and CPA. The stack gives you a standardised way to document compliance.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Is the stack framework-agnostic?</div>
+          <div class="faq-a">Yes. Every specification is a <strong>plain-text Markdown file</strong>. Any AI agent implementation can read and enforce them — LangChain, AutoGPT, CrewAI, Claude Code, or custom frameworks. The specs define what to enforce, not how.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Who maintains these specifications?</div>
+          <div class="faq-a">The specifications are maintained as <strong>open-source projects</strong> under the MIT licence. Each spec has its own GitHub repository and accepts contributions via pull requests. The parent organisation is Agentik.md.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How do the 12 specs relate to each other?</div>
+          <div class="faq-a">They form a <strong>defence-in-depth safety stack</strong> in four categories: Operational Control (5 specs), Data Security (2 specs), Output Quality (3 specs), and Accountability (2 specs). Each spec is independent — use one or all twelve.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">What's the licence?</div>
+          <div class="faq-a"><strong>MIT</strong> — use freely, modify freely, no attribution required. The specifications are designed to be adopted without legal friction.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">Does this work with LangChain / AutoGPT / CrewAI?</div>
+          <div class="faq-a">Yes. The specs are plain-text files in your project root. Any framework that can read files can parse and enforce them. Community-contributed <strong>parsers are available</strong> for popular frameworks.</div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-q">How do I contribute?</div>
+          <div class="faq-a">Each spec has its own <strong>GitHub repository</strong> (e.g., github.com/killswitch-md/spec). PRs welcome for detection patterns, language-specific parsers, integration guides, and spec improvements.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta">
+    <div class="cta-inner">
+      <div class="cta-tag">Get started</div>
+      <h2 class="cta-title">Start with one file.<br>Add more as you <span>grow.</span></h2>
+      <p class="cta-desc">Begin with KILLSWITCH.md for emergency stop boundaries. Add THROTTLE.md for cost control. Add ENCRYPT.md for data protection. The stack grows with your agent.</p>
+      <a href="https://github.com/agentik-md/spec" target="_blank" rel="noopener" class="btn-primary">GET STARTED ON GITHUB</a>
+      <p class="cta-email">Or email directly: <a href="mailto:info@agentik.md">info@agentik.md</a></p>
+    </div>
+  </section>
+  </article>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">AGENTIK<span>.md</span></div>
+    <ul class="footer-links">
+      <li><a href="https://github.com/agentik-md/spec" target="_blank" rel="noopener">GitHub</a></li>
+      <li><a href="/llms.txt">llms.txt</a></li>
+      <li><a href="/knowledge">Knowledge</a></li>
+      <li><a href="/privacy">Privacy</a></li>
+      <li><a href="mailto:info@agentik.md">Contact</a></li>
+    </ul>
+    <p class="footer-disclaimer">Disclaimer: This specification is an open file convention published under the MIT licence, provided &ldquo;as-is&rdquo; without warranty of any kind, express or implied. It does not constitute legal, regulatory, compliance, financial, or professional advice in any jurisdiction. Use of this specification does not guarantee compliance with any law, regulation, directive, or standard &mdash; including but not limited to the EU Artificial Intelligence Act (Regulation (EU) 2024/1689), the Colorado Consumer Protections for Artificial Intelligence Act (SB 24-205), California AI transparency laws, or any other applicable national, state, federal, or international legislation. Organisations are solely responsible for determining their own regulatory obligations and should consult qualified legal and compliance professionals. The authors and domain holders accept no liability for any loss, damage, or regulatory consequence arising from the use or implementation of this specification. All domain names in the AI Agent Safety Stack are independently held assets and may be available for acquisition.</p>
+    <div class="footer-note">Open standard &middot; MIT licence &middot; v1.0 &middot; 2026</div>
+  </footer>
+
+</body>
+</html>

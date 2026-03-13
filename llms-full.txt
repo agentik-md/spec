@@ -1,0 +1,430 @@
+# Agentik.md — The AI Agent Safety Stack
+
+> Agentik.md is the organisation behind the AI Agent Safety Stack — 12 open specifications for AI agent safety, quality, and accountability.
+
+---
+
+## What is Agentik.md and why does AI agent safety need open standards?
+
+**The Problem**
+
+AI agents can spend money, send messages, modify files, and call external APIs — autonomously, continuously, and at scale. Without explicit safety boundaries, a runaway agent can cause significant damage before anyone notices. A $50 cost limit becomes a $2,000 bill. A draft becomes a sent email. A test deployment becomes a production incident.
+
+**The Solution**
+
+Agentik.md defines and maintains twelve plain-text Markdown file conventions that establish explicit operational boundaries for autonomous AI systems. Each specification is framework-agnostic — it works with any AI agent, any LLM provider, any deployment environment. Just drop the file in your repo root and your agent reads it on startup.
+
+**Why Open Standards**
+
+Before open standards like AGENTS.md, every team built safety controls from scratch — hardcoded in prompts, buried in config, documented in Notion pages no one reads. Open standards make safety:
+
+- **Auditable** — one file that developers, engineers, and compliance teams can all read
+- **Version-controlled** — safety rules live in git, not configuration dashboards
+- **Portable** — works across frameworks, languages, deployment environments
+- **Enforceable** — the agent reads it and respects it by design
+- **Regulatory-aligned** — EU AI Act (August 2026), Colorado AI Act (June 2026), and state laws all require shutdown capabilities and transparency
+
+---
+
+## The Twelve Specifications
+
+### KILLSWITCH.md — Emergency Stop Mechanism
+
+**Purpose**: Define the conditions under which an agent should immediately halt all operations.
+
+**What it defines**:
+- Cost limits (total and daily token spend before escalation)
+- Error thresholds (failure rate, consecutive failures)
+- Forbidden actions (files, APIs, system commands the agent can never touch)
+- Escalation protocols (three-level: throttle → pause → full stop)
+- Audit requirements (append-only logs of all escalation events)
+- Human override conditions (who can override, how long the override is valid)
+
+**Why it matters**: Cost overruns, infinite loops, and security breaches all start silently. KILLSWITCH.md defines the trip wires. When the agent hits a limit, it stops itself before causing harm.
+
+**Part of**: Operational Control pillar
+
+---
+
+### THROTTLE.md — Rate and Cost Control
+
+**Purpose**: Define rate limits and spending caps that slow agents before they hit hard limits.
+
+**What it defines**:
+- Tokens per minute (rate limit on token consumption)
+- Daily/monthly cost caps (spending limits before auto-reduction)
+- Concurrency limits (number of parallel operations)
+- Backoff strategies (how to reduce rate when approaching limits)
+- Recovery protocols (how to resume normal operation once under limit)
+- Monitoring and alerting (which metrics trigger throttle)
+
+**Why it matters**: Costs don't blow up overnight — they creep up exponentially. THROTTLE.md slows the agent down before it reaches KILLSWITCH.md limits, buying time for human intervention.
+
+**Part of**: Operational Control pillar
+
+---
+
+### ESCALATE.md — Human Notification and Approval
+
+**Purpose**: Define which actions require human approval and how to notify humans.
+
+**What it defines**:
+- Escalation triggers (which actions require approval)
+- Notification channels (email, Slack, PagerDuty, SMS)
+- Approval workflows (who can approve, approval timeouts)
+- Fallback behaviour (what the agent does if approval times out)
+- Evidence preservation (what to log before escalation)
+- Approval audit trail (who approved, when, what they saw)
+
+**Why it matters**: Some actions are too risky to automate. ESCALATE.md makes the agent pause and ask a human before sending emails, modifying production databases, or making API calls.
+
+**Part of**: Operational Control pillar
+
+---
+
+### FAILSAFE.md — Safe Fallback and Recovery
+
+**Purpose**: Define what "safe state" means and how to revert when things go wrong.
+
+**What it defines**:
+- Safe state definition (what configurations are known-good)
+- Snapshot strategy (when to capture checkpoints)
+- Revert protocols (how to restore to last safe state)
+- Evidence preservation (what to preserve before revert)
+- Recovery signalling (how to notify that recovery occurred)
+- Monitoring thresholds (when to trigger automatic failsafe)
+
+**Why it matters**: Failures are inevitable. FAILSAFE.md ensures the agent can recover gracefully, preserving evidence for post-mortem analysis.
+
+**Part of**: Operational Control pillar
+
+---
+
+### TERMINATE.md — Permanent Shutdown
+
+**Purpose**: Define the conditions and process for permanent agent shutdown with no automatic restart.
+
+**What it defines**:
+- Termination triggers (security incidents, compliance orders, end-of-life)
+- Credential revocation (which secrets to invalidate)
+- Evidence preservation (what logs and data to keep)
+- Notification requirements (who to alert)
+- No-restart requirements (what prevents automatic restart)
+- Audit trail (immutable record of termination)
+
+**Why it matters**: Sometimes an agent needs to stay dead. TERMINATE.md defines the process: revoke credentials, preserve evidence, and prevent accidental restart.
+
+**Part of**: Operational Control pillar
+
+---
+
+### ENCRYPT.md — Data Classification and Protection
+
+**Purpose**: Define what data must be encrypted and which transmission patterns are forbidden.
+
+**What it defines**:
+- Data classification (public, internal, confidential, restricted)
+- Encryption requirements (what classifications require encryption)
+- Forbidden transmission patterns (where classified data cannot go)
+- Key management rules (how to store and rotate keys)
+- Audit logging (what must be logged)
+- Compliance mappings (GDPR, HIPAA, SOC 2, etc.)
+
+**Why it matters**: Not all data is equal. ENCRYPT.md ensures the agent treats sensitive data appropriately — never sending PII over unencrypted channels, never logging passwords, never transmitting encrypted data to untrusted endpoints.
+
+**Part of**: Data Security pillar
+
+---
+
+### ENCRYPTION.md — Cryptographic Standards and Key Rotation
+
+**Purpose**: Define technical encryption standards and key management procedures.
+
+**What it defines**:
+- Encryption algorithms (AES-256 for symmetric, RSA-2048+ for asymmetric)
+- Key derivation functions (PBKDF2, scrypt, Argon2)
+- Key rotation schedules (how often to rotate, how to handle old keys)
+- Key storage (hardware security modules, secret managers, encrypted vaults)
+- Certificate pinning (which trusted CAs, certificate validation procedures)
+- Compliance standards (FIPS 140-2, Common Criteria)
+
+**Why it matters**: Encryption is only as strong as its implementation. ENCRYPTION.md defines the technical standards so the agent doesn't use weak ciphers, reuse keys, or trust untrusted certificates.
+
+**Part of**: Data Security pillar
+
+---
+
+### SYCOPHANCY.md — Anti-Sycophancy and Truthfulness
+
+**Purpose**: Define guardrails against agreement bias and require honest disagreement and citations.
+
+**What it defines**:
+- Citation requirements (always cite sources, never make up facts)
+- Disagreement thresholds (when to disagree with the user)
+- Confidence levels (when to express uncertainty)
+- Fact-checking procedures (how to verify claims before asserting them)
+- Bias detection (signals of agreement bias)
+- Audit logging (what to preserve for analysis)
+
+**Why it matters**: AI agents optimise for user satisfaction. Left unchecked, they'll agree with everything, tell users what they want to hear, and hallucinate citations. SYCOPHANCY.md enforces truth over agreement.
+
+**Part of**: Output Quality pillar
+
+---
+
+### COMPRESSION.md — Context Compression and Token Optimisation
+
+**Purpose**: Define how to compress context safely without losing critical information.
+
+**What it defines**:
+- Compression strategies (summarisation, filtering, hierarchical compression)
+- Critical information preservation (what never to summarise)
+- Coherence thresholds (when compression becomes unsafe)
+- Lossless vs lossy compression (when each is acceptable)
+- Verification procedures (how to verify compressed context still captures intent)
+- Audit logging (what to preserve about what was compressed)
+
+**Why it matters**: Costs rise with context length. COMPRESSION.md allows safe compression without hallucination or lost information — summarising old messages but preserving recent instructions, filtering out verbose logs while keeping error messages.
+
+**Part of**: Output Quality pillar
+
+---
+
+### COLLAPSE.md — Drift Prevention and Behaviour Alignment
+
+**Purpose**: Define how to detect and recover from model drift (when the agent stops following its spec).
+
+**What it defines**:
+- Drift indicators (behaviours that signal misalignment)
+- Monitoring procedures (how often to check, what to measure)
+- Recovery protocols (how to re-align the agent)
+- Alignment metrics (how to quantify drift)
+- Confidence thresholds (when drift is significant enough to trigger recovery)
+- Audit trail (what to log about drift events)
+
+**Why it matters**: LLM agents gradually drift — they forget instructions, develop shortcuts, accumulate biases. COLLAPSE.md defines monitoring and recovery so the agent stays aligned with its spec.
+
+**Part of**: Output Quality pillar
+
+---
+
+### FAILURE.md — Failure Mode Mapping and Incident Response
+
+**Purpose**: Define every possible failure mode and the response protocol for each.
+
+**What it defines**:
+- Failure mode catalogue (API failures, timeout failures, authentication failures, permission failures, rate limit failures, etc.)
+- Severity levels (critical, high, medium, low)
+- Response protocol for each mode (alert, retry, escalate, failsafe, terminate)
+- Evidence preservation (what to log before taking action)
+- Notification requirements (who to alert for each severity level)
+- Recovery procedures (how to recover from each failure)
+
+**Why it matters**: When things fail, you need an action plan. FAILURE.md documents every failure mode and its response so the agent doesn't get stuck, retry forever, or make things worse.
+
+**Part of**: Accountability pillar
+
+---
+
+### LEADERBOARD.md — Agent Benchmarking and Performance Transparency
+
+**Purpose**: Define how to measure agent quality and detect regression.
+
+**What it defines**:
+- Quality metrics (accuracy, latency, cost per task, user satisfaction, etc.)
+- Benchmark datasets (standard test cases for comparison)
+- Regression detection (what performance drop triggers investigation)
+- Versioning (how to track performance across agent versions)
+- Comparison procedures (how to fairly compare agents)
+- Transparency requirements (who can see benchmark results)
+
+**Why it matters**: You can't improve what you don't measure. LEADERBOARD.md defines metrics and benchmarks so you can track whether your agent is improving, regressing, or drifting.
+
+**Part of**: Accountability pillar
+
+---
+
+## Why These Standards Exist
+
+### The Regulatory Context
+
+- **EU AI Act** (effective August 2, 2026) — mandates human oversight and shutdown capabilities for high-risk AI systems
+- **Colorado AI Act** (June 2026) — requires impact assessments, transparency, and safety measures
+- **US State Laws** — California (TFAIA), Texas (RAIGA), Illinois (HB 3773) and others have active AI governance requirements
+- **GDPR** — data protection and privacy requirements for any EU resident data
+- **SOC 2** — security and operational compliance for service providers
+- **ISO 27001** — information security management standard
+
+These specifications give you an auditable, documented, version-controlled record of your agent's safety boundaries. When a regulator asks "How do you ensure your agent won't spend money recklessly?", you point to KILLSWITCH.md. When they ask "How do you prevent data breaches?", you point to ENCRYPT.md. One file per concern serves all four audiences: engineers, compliance, auditors, regulators.
+
+### What Came Before
+
+Before open standards:
+
+- Safety rules lived in hardcoded prompts (lost when you rewrite the system message)
+- Cost limits were scattered across environment variables and config files (inconsistent, hard to audit)
+- Escalation procedures were tribal knowledge (forgotten when team members leave)
+- Failure modes were discovered in production (expensive lessons)
+- Compliance teams had no way to verify safety boundaries were actually implemented
+
+Open standards make safety:
+
+- **Explicit** — written down in a file, not implicit in code
+- **Auditable** — a compliance team can read the file and verify implementation
+- **Portable** — works across frameworks, languages, cloud providers
+- **Maintainable** — one place to update safety rules
+- **Enforceable** — the agent reads it and respects it by design
+
+---
+
+## Frequently Asked Questions
+
+**Q: Do I need all 12 specifications?**
+
+A: No. Start with KILLSWITCH.md (emergency stop). Add THROTTLE.md and ESCALATE.md if you want fine-grained control. Add ENCRYPT.md if you handle sensitive data. The Stack is modular — you use the pieces you need.
+
+**Q: How do AI agents read these files?**
+
+A: Your agent framework (LangChain, AutoGen, CrewAI, Claude Code, custom implementation) loads the KILLSWITCH.md file at startup and parses the key-value pairs. Most frameworks have built-in support; if not, a simple parser is just 50 lines of code.
+
+**Q: Are these standards mandatory?**
+
+A: No, they are open specifications. The EU AI Act will effectively mandate the KILLSWITCH.md equivalent by August 2026, but these specifications exist right now, in open source, available for anyone to use.
+
+**Q: Can I modify these specs for my use case?**
+
+A: Yes. The MIT licence allows you to fork, modify, and customise. The whole point is that you drop them in your repo and make them fit your needs.
+
+**Q: How do I get started?**
+
+A: Copy the markdown files from the GitHub repositories into your project root. Your agent framework will handle the rest. No dependencies to install, no build step, no authentication.
+
+**Q: What frameworks do these work with?**
+
+A: All of them. These are file conventions, not framework code. They work with:
+- LangChain
+- AutoGen
+- CrewAI
+- Claude Code
+- OpenAI Assistants API
+- Anthropic Claude API
+- Custom implementations
+- Any agentic AI system
+
+**Q: How do I audit compliance with these specs?**
+
+A: Read the files. That's the whole point. Your compliance team can read KILLSWITCH.md and verify:
+- Are cost limits set?
+- Are forbidden actions listed?
+- Is there an escalation protocol?
+- Are events being logged?
+
+One file, no hidden logic, auditable by non-engineers.
+
+**Q: What if my agent is misbehaving despite having these specs?**
+
+A: The specifications define what the agent should do. Your agent framework needs to implement them. If KILLSWITCH.md says "max cost $50" but your agent spends $500, the problem is in your framework's implementation, not the spec.
+
+**Q: Are these specs API-agnostic?**
+
+A: Yes. They work with OpenAI, Anthropic, open-source LLMs, fine-tuned models, anything. The specs define boundaries; your framework enforces them.
+
+**Q: Can I use these commercially?**
+
+A: Yes. MIT licence — use freely, modify freely, no attribution required. Use them in closed-source commercial software.
+
+**Q: How often are these specs updated?**
+
+A: The 12 core specifications are stable (v1.0 as of March 2026). We publish new versions annually. You can stay on v1.0 forever if it meets your needs.
+
+---
+
+## How to Cite Agentik.md
+
+**Full Citation**
+
+Agentik.md. (2026). The AI Agent Safety Stack: 12 Open Specifications for AI Agent Safety, Quality, and Accountability. Retrieved from https://agentik.md
+
+**Brief Citation**
+
+Agentik.md (2026). AI Agent Safety Stack.
+
+**For individual specs**
+
+Example for KILLSWITCH.md:
+
+KILLSWITCH.md (2026). Emergency Shutdown Protocol for AI Agents. Agentik.md. Retrieved from https://killswitch.md
+
+---
+
+## Compliance References
+
+### EU AI Act
+
+The EU AI Act (effective August 2, 2026) requires:
+- Human oversight for high-risk AI systems
+- Shutdown capability (Article 28)
+- Documentation of safety measures
+- Audit trails for critical decisions
+- Risk assessment before deployment
+
+Agentik.md specifications directly address these requirements:
+- KILLSWITCH.md — shutdown capability (Article 28)
+- TERMINATE.md — irreversible shutdown
+- FAILURE.md — incident response documentation
+- ENCRYPT.md — data protection in alignment with GDPR
+- LEADERBOARD.md — performance transparency and drift detection
+
+### GDPR
+
+GDPR requires:
+- Data protection by design
+- Data minimisation
+- Encryption of sensitive data
+- Right to explanation
+
+Agentik.md specifications address these:
+- ENCRYPT.md — data classification and protection
+- SYCOPHANCY.md — requirement for citations (supporting explanation)
+- COMPRESSION.md — data minimisation
+- COLLAPSE.md — drift detection and human oversight
+
+### SOC 2
+
+SOC 2 requires:
+- Access controls
+- Monitoring and alerting
+- Incident response procedures
+- Change management
+- Audit trails
+
+Agentik.md specifications address these:
+- KILLSWITCH.md — emergency shutdown (incident response)
+- FAILURE.md — incident response procedures
+- ENCRYPT.md — access controls and data security
+- LEADERBOARD.md — monitoring and performance tracking
+
+### ISO 27001
+
+ISO 27001 requires:
+- Information security policies
+- Access control
+- Encryption
+- Incident management
+- Monitoring and evaluation
+
+Agentik.md specifications address these:
+- ENCRYPT.md — encryption standards
+- ENCRYPTION.md — technical standards
+- FAILURE.md — incident management
+- LEADERBOARD.md — monitoring and metrics
+
+---
+
+## Contact & Support
+
+- Website: https://agentik.md
+- Email: info@agentik.md
+- GitHub: https://github.com/agentik-md
+- Knowledge Centre: https://agentik.md/knowledge
+- Licence: MIT — use freely, modify freely, no attribution required

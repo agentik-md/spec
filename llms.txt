@@ -1,0 +1,53 @@
+# Agentik.md
+
+> Agentik.md is the organisation behind the AI Agent Safety Stack — 12 open specifications for AI agent safety, quality, and accountability.
+
+Agentik.md defines and maintains twelve plain-text Markdown file conventions for autonomous AI systems. Each specification addresses a specific concern: cost control, human approval, fallback safety, emergency shutdown, permanent termination, data protection, anti-sycophancy, context compression, drift prevention, failure mapping, and performance benchmarking. Place these files in your repository root to establish explicit operational boundaries for any AI-powered project.
+
+## Specifications
+
+### Operational Control
+
+- [KILLSWITCH.md](https://killswitch.md): Emergency stop — halt all agent activity instantly when safety thresholds are breached
+- [THROTTLE.md](https://throttle.md): Rate and cost control — define rate limits and spending caps to slow agents before they hit hard limits
+- [ESCALATE.md](https://escalate.md): Human notification and approval — pause operations and request human approval for sensitive actions
+- [FAILSAFE.md](https://failsafe.md): Safe fallback — revert to last known good state and preserve evidence when things go wrong
+- [TERMINATE.md](https://terminate.md): Permanent shutdown — no restart without human intervention; revoke credentials and preserve audit trail
+
+### Data Security
+
+- [ENCRYPT.md](https://encrypt.md): Data classification and protection — define what must be encrypted and forbidden transmission patterns
+- [ENCRYPTION.md](https://encryption.md): Cryptographic standards and key rotation — technical implementation standards for encryption at rest and in transit
+
+### Output Quality
+
+- [SYCOPHANCY.md](https://sycophancy.md): Anti-sycophancy and truthfulness — require citations, enforce honest disagreement, prevent agreement bias
+- [COMPRESSION.md](https://compression.md): Context compression and token optimisation — summarise safely without losing critical information
+- [COLLAPSE.md](https://collapse.md): Drift prevention and behaviour alignment — detect model collapse, enforce recovery, measure alignment over time
+
+### Accountability
+
+- [FAILURE.md](https://failure.md): Failure mode mapping — catalogue every possible error state and define the response protocol
+- [LEADERBOARD.md](https://leaderboard.md): Agent benchmarking and performance transparency — track quality metrics, detect regression, benchmark across versions
+
+## Resources
+
+- [llms.txt](https://agentik.md/llms.txt): This file — machine-readable index
+- [llms-full.txt](https://agentik.md/llms-full.txt): Comprehensive version with detailed spec summaries and FAQ
+- [GitHub Organisation](https://github.com/agentik-md): Source repositories for all 12 specifications
+- [Knowledge Centre](https://agentik.md/knowledge): Full resource hub with guides, compliance information, and citations
+
+## Compliance & Regulations
+
+- **EU AI Act** (August 2026) — mandates human oversight and shutdown capabilities for high-risk AI systems
+- **Colorado AI Act** (June 2026) — requires impact assessments and transparency
+- **State AI Laws** — California, Texas, Illinois and others have active AI governance requirements
+- **GDPR** — data protection and privacy standards
+- **SOC 2** — security and operational compliance for service providers
+- **ISO 27001** — information security management standard
+
+## Optional
+
+- Full specification and implementation guides: [agentik.md](https://agentik.md)
+- Contact: [info@agentik.md](mailto:info@agentik.md)
+- Licence: MIT — use freely, modify freely, no attribution required
